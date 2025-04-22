@@ -378,7 +378,7 @@
       <div class="info-card">
         <h3>部署区域</h3>
         <div class="badge-container">
-          <span class="badge">HND1 (东京)</span>
+          <span class="badge">ICN1 (首尔)</span>
         </div>
       </div>
     </div>
@@ -417,7 +417,7 @@ curl ${base_url}/openai/v1/chat/completions \
   <div class="api-section">
     <div class="api-header" onclick="toggleSection('gemini')">
       <h2>
-        <img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini-logo.max-1000x1000.png" class="api-logo" alt="Gemini Logo">
+        <img src="https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d4735304ff6292a690345.svg" class="api-logo" alt="Gemini Logo">
         Google Gemini API
       </h2>
       <span class="toggle-icon">▼</span>
@@ -449,7 +449,7 @@ curl ${base_url}/gemini/v1beta/chat/completions \
   <div class="api-section">
     <div class="api-header" onclick="toggleSection('claude')">
       <h2>
-        <img src="https://www.anthropic.com/images/favicon.svg" class="api-logo" alt="Claude Logo">
+        <img src="https://www.anthropic.com/images/icons/favicon-32x32.png" class="api-logo" alt="Claude Logo">
         Anthropic Claude API
       </h2>
       <span class="toggle-icon">▼</span>
@@ -483,7 +483,7 @@ curl ${base_url}/claude/v1/messages \
   <div class="api-section">
     <div class="api-header" onclick="toggleSection('groq')">
       <h2>
-        <img src="https://groq.com/wp-content/uploads/2023/12/groq-favicon.png" class="api-logo" alt="Groq Logo">
+        <img src="https://groq.com/wp-content/uploads/2024/02/android-icon-192x192-1-150x150.png" class="api-logo" alt="Groq Logo">
         Groq API
       </h2>
       <span class="toggle-icon">▼</span>
@@ -648,7 +648,7 @@ curl ${base_url}/github/v1/chat/completions \
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const BASE_URL = 'https://api-proxy.funtui.com';
+    const BASE_URL = 'https://api-proxy-gilt-seven.vercel.app';
     const elements = document.querySelectorAll('code');
     elements.forEach(element => {
       element.innerText = element.innerText.replace('${base_url}', BASE_URL);
