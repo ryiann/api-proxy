@@ -33,7 +33,6 @@
       padding: 40px 20px;
     }
 
-    /* 重新设计的头部区域 */
     .hero-section {
       position: relative;
       margin-bottom: 30px;
@@ -101,7 +100,6 @@
       line-height: 1.5;
     }
 
-    /* 特性卡片区域 - 重新设计为水平布局 */
     .features-container {
       display: flex;
       justify-content: center;
@@ -194,14 +192,12 @@
       transform: scale(1.05);
     }
 
-    /* 分隔线 */
     .divider {
       height: 1px;
       background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.1), transparent);
       margin: 30px 0;
     }
 
-    /* 保留原有的API部分样式 */
     .api-section {
       margin-bottom: 30px;
       position: relative;
@@ -462,7 +458,6 @@
 </head>
 <body>
 <div class="container">
-  <!-- 重新设计的头部区域 -->
   <section class="hero-section">
     <div class="hero-content">
       <h1 class="hero-title">AI API Hub 智能聚合平台</h1>
@@ -504,17 +499,16 @@
   <h2 class="section-title">API 接入指南</h2>
   <p class="section-subtitle">选择下方任意模型服务，查看详细接入方式</p>
 
-  <!-- 以下是原有的API部分，保持不变 -->
   <div class="api-section">
     <div class="api-header" onclick="toggleSection('openai')">
       <h2>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/512px-ChatGPT_logo.svg.png" class="api-logo" alt="OpenAI Logo">
+        <img src="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/openai.png" class="api-logo" alt="OpenAI Logo">
         OpenAI API
       </h2>
       <span class="toggle-icon">▼</span>
     </div>
     <div class="api-content" id="openai">
-      <p class="api-description">OpenAI API支持访问 <a href="https://platform.openai.com/docs/guides/text-generation" target="_blank" class="api-link">GPT</a> 模型。只需将原有请求中的域名改为我们的域名即可。</p>
+      <p class="api-description">OpenAI API 为开发者提供强大的 <a href="https://platform.openai.com/docs/guides/text-generation" target="_blank" class="api-link">GPT</a> 系列模型，支持自然语言生成和理解，轻松集成至各类应用。</p>
       <h4 class="gradient-text">API代理地址</h4>
       <div class="code-block">
         <button class="copy-button" onclick="copyCode(this)">复制</button>
@@ -538,13 +532,13 @@ curl ${base_url}/openai/v1/chat/completions \
   <div class="api-section">
     <div class="api-header" onclick="toggleSection('gemini')">
       <h2>
-        <img src="https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d4735304ff6292a690345.svg" class="api-logo" alt="Gemini Logo">
+        <img src="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/gemini-color.png" class="api-logo" alt="Gemini Logo">
         Google Gemini API
       </h2>
       <span class="toggle-icon">▼</span>
     </div>
     <div class="api-content" id="gemini">
-      <p class="api-description">支持访问Google的 <a href="https://developers.googleblog.com/en/gemini-is-now-accessible-from-the-openai-library/" target="_blank" class="api-link">Gemini</a> 模型。使用方式与原生API完全一致。</p>
+      <p class="api-description">Google <a href="https://developers.googleblog.com/en/gemini-is-now-accessible-from-the-openai-library/" target="_blank" class="api-link">Gemini</a> 模型，助力开发者体验多模态强大能力，兼容原生 API 接入。</p>
       <h4 class="gradient-text">API代理地址</h4>
       <div class="code-block">
         <button class="copy-button" onclick="copyCode(this)">复制</button>
@@ -570,13 +564,13 @@ curl ${base_url}/gemini/v1beta/chat/completions \
   <div class="api-section">
     <div class="api-header" onclick="toggleSection('claude')">
       <h2>
-        <img src="https://www.anthropic.com/images/icons/favicon-32x32.png" class="api-logo" alt="Claude Logo">
+        <img src="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/claude-color.png" class="api-logo" alt="Claude Logo">
         Anthropic Claude API
       </h2>
       <span class="toggle-icon">▼</span>
     </div>
     <div class="api-content" id="claude">
-      <p class="api-description">支持访问 <a href="https://docs.anthropic.com/zh-CN/api/getting-started" target="_blank" class="api-link">Claude</a> 系列模型。</p>
+      <p class="api-description"><a href="https://docs.anthropic.com/zh-CN/api/getting-started" target="_blank" class="api-link">Claude</a> 由 Anthropic 提供，以安全、可靠为核心，适用于高要求的生成式AI场景。</p>
       <h4 class="gradient-text">API代理地址</h4>
       <div class="code-block">
         <button class="copy-button" onclick="copyCode(this)">复制</button>
@@ -604,13 +598,13 @@ curl ${base_url}/claude/v1/messages \
   <div class="api-section">
     <div class="api-header" onclick="toggleSection('groq')">
       <h2>
-        <img src="https://groq.com/wp-content/uploads/2024/02/android-icon-192x192-1-150x150.png" class="api-logo" alt="Groq Logo">
+        <img src="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/groq.png" class="api-logo" alt="Groq Logo">
         Groq API
       </h2>
       <span class="toggle-icon">▼</span>
     </div>
     <div class="api-content" id="groq">
-      <p class="api-description"><a href="https://console.groq.com/docs/api-reference#chat" target="_blank" class="api-link">Groq</a> 支持 OpenAI 格式的请求，提供更快的推理速度。</p>
+      <p class="api-description"><a href="https://console.groq.com/docs/api-reference#chat" target="_blank" class="api-link">Groq</a> 通过 OpenAI 格式接口，专注极致推理速度，满足高并发、低延迟需求。</p>
       <h4 class="gradient-text">API代理地址</h4>
       <div class="code-block">
         <button class="copy-button" onclick="copyCode(this)">复制</button>
@@ -634,13 +628,13 @@ curl ${base_url}/groq/openai/v1/chat/completions \
   <div class="api-section">
     <div class="api-header" onclick="toggleSection('cohere')">
       <h2>
-        <img src="https://cohere.com/favicon.ico" class="api-logo" alt="Cohere Logo">
+        <img src="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/cohere-color.png" class="api-logo" alt="Cohere Logo">
         Cohere API
       </h2>
       <span class="toggle-icon">▼</span>
     </div>
     <div class="api-content" id="cohere">
-      <p class="api-description">支持 <a href="https://docs.cohere.com/reference/chat" target="_blank" class="api-link">Cohere</a> 的各种模型和API端点。</p>
+      <p class="api-description"><a href="https://docs.cohere.com/reference/chat" target="_blank" class="api-link">Cohere</a> 致力于提供先进的文本生成和理解模型，支持多样化 API 端点与用例。</p>
       <h4 class="gradient-text">API代理地址</h4>
       <div class="code-block">
         <button class="copy-button" onclick="copyCode(this)">复制</button>
@@ -665,13 +659,13 @@ curl ${base_url}/cohere/v2/chat \
   <div class="api-section">
     <div class="api-header" onclick="toggleSection('xai')">
       <h2>
-        <img src="https://x.ai/favicon.ico" class="api-logo" alt="xAI Logo">
+        <img src="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/grok.png" class="api-logo" alt="xAI Logo">
         xAI (Grok) API
       </h2>
       <span class="toggle-icon">▼</span>
     </div>
     <div class="api-content" id="xai">
-      <p class="api-description">支持 <a href="https://docs.x.ai/docs/quickstart#making-your-first-request" target="_blank" class="api-link">xAI</a> 的 Grok 模型。</p>
+      <p class="api-description"><a href="https://docs.x.ai/docs/quickstart#making-your-first-request" target="_blank" class="api-link">xAI</a> 团队推出的 Grok 模型，兼具创新能力与时效性，有效应对开放域任务。</p>
       <h4 class="gradient-text">API代理地址</h4>
       <div class="code-block">
         <button class="copy-button" onclick="copyCode(this)">复制</button>
@@ -706,13 +700,13 @@ curl ${base_url}/xai/v1/chat/completions \
   <div class="api-section">
     <div class="api-header" onclick="toggleSection('mistral')">
       <h2>
-        <img src="https://mistral.ai/favicon.ico" class="api-logo" alt="Mistral Logo">
+        <img src="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/mistral-color.png" class="api-logo" alt="Mistral Logo">
         Mistral API
       </h2>
       <span class="toggle-icon">▼</span>
     </div>
     <div class="api-content" id="mistral">
-      <p class="api-description">支持 <a href="https://docs.mistral.ai/api/" target="_blank" class="api-link">Mistral</a> 的各种模型。</p>
+      <p class="api-description"><a href="https://docs.mistral.ai/api/" target="_blank" class="api-link">Mistral</a> 模型以高效轻量著称，适配多场景应用，开放灵活的 API 调用体验。</p>
       <h4 class="gradient-text">API代理地址</h4>
       <div class="code-block">
         <button class="copy-button" onclick="copyCode(this)">复制</button>
@@ -737,13 +731,13 @@ curl ${base_url}/mistral/v1/chat/completions \
   <div class="api-section">
     <div class="api-header" onclick="toggleSection('github')">
       <h2>
-        <img src="https://github.githubassets.com/favicons/favicon.svg" class="api-logo" alt="Github Logo">
+        <img src="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/github.png" class="api-logo" alt="Github Logo">
         Github AI API
       </h2>
       <span class="toggle-icon">▼</span>
     </div>
     <div class="api-content" id="github">
-      <p class="api-description">支持 <a href="https://ai.azure.com/github/model/docs" target="_blank" class="api-link">Github AI</a> 的各种模型。</p>
+      <p class="api-description"><a href="https://ai.azure.com/github/model/docs" target="_blank" class="api-link">GitHub AI</a> 提供丰富模型和开发工具，助力智能开发与协作创新。</p>
       <h4 class="gradient-text">API代理地址</h4>
       <div class="code-block">
         <button class="copy-button" onclick="copyCode(this)">复制</button>
@@ -770,14 +764,18 @@ curl ${base_url}/github/v1/chat/completions \
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const BASE_URL = 'https://api-proxy-gilt-seven.vercel.app';
-    const elements = document.querySelectorAll('code');
-    elements.forEach(element => {
-      element.innerText = element.innerText.replace('${base_url}', BASE_URL);
+    const codeElements = document.querySelectorAll('code');
+    codeElements.forEach(element => {
+      if (element.textContent.includes('${base_url}')) {
+        element.textContent = element.textContent.replace('${base_url}', BASE_URL);
+      }
     });
 
-    const codeBlocks = document.querySelectorAll('pre');
-    codeBlocks.forEach(block => {
-      block.innerHTML = block.innerHTML.replace('${base_url}', BASE_URL);
+    const preElements = document.querySelectorAll('pre');
+    preElements.forEach(block => {
+      if (block.textContent.includes('${base_url}')) {
+        block.textContent = block.textContent.replace('${base_url}', BASE_URL);
+      }
     });
   });
 
@@ -789,7 +787,6 @@ curl ${base_url}/github/v1/chat/completions \
     content.classList.toggle('active');
     arrow.classList.toggle('rotate');
 
-    // Close other sections
     const allSections = document.querySelectorAll('.api-content');
     const allArrows = document.querySelectorAll('.toggle-icon');
 
