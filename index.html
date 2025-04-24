@@ -8,40 +8,53 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary-color: #0066cc;
+      --primary-color: #007aff;
       --secondary-color: #5856d6;
+      --accent-color: #af52de;
       --background-color: #f5f5f7;
-      --card-background: #ffffff;
+      --card-background: rgba(255, 255, 255, 0.85);
       --text-color: #1d1d1f;
-      --code-background: #f6f6f6;
-      --border-radius: 16px;
-      --glass-background: rgba(255, 255, 255, 0.8);
+      --code-background: rgba(246, 246, 246, 0.9);
+      --border-radius: 20px;
+      --glass-blur: blur(15px);
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       background-color: var(--background-color);
-      margin: 0;
-      padding: 0;
       color: var(--text-color);
       line-height: 1.6;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #f5f5f7 0%, #eaeaf2 100%);
+      overflow-x: hidden;
     }
 
     .container {
       max-width: 1100px;
       margin: auto;
       padding: 40px 20px;
+      position: relative;
+      z-index: 1;
     }
 
     .hero-section {
       position: relative;
       margin-bottom: 30px;
+      border-radius: var(--border-radius);
+      background: var(--card-background);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      box-shadow: var(--shadow);
       overflow: hidden;
-      border-radius: 24px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      box-shadow: 0 20px 80px rgba(0, 0, 0, 0.07);
+      animation: fadeIn 0.8s ease-out;
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .hero-section::before {
@@ -51,25 +64,37 @@
       left: 0;
       right: 0;
       bottom: 0;
-      border-radius: 24px;
-      padding: 2px;
+      border-radius: var(--border-radius);
+      padding: 3px;
       background: linear-gradient(
-              135deg,
+              45deg,
               #ff2d55,
               #ff9500,
               #ffcc00,
               #34c759,
               #5ac8fa,
-              #007aff,
-              #5856d6,
-              #af52de
+              var(--primary-color),
+              var(--secondary-color),
+              var(--accent-color)
       );
-      -webkit-mask:
-              linear-gradient(#fff 0 0) content-box,
-              linear-gradient(#fff 0 0);
+      background-size: 300%;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
       pointer-events: none;
+      animation: gradientShift 15s ease infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .hero-content {
@@ -83,12 +108,20 @@
       margin: 0 0 20px;
       font-size: 3rem;
       font-weight: 700;
-      letter-spacing: -1px;
+      letter-spacing: -1.5px;
       line-height: 1.1;
-      background: linear-gradient(90deg, #007aff, #5856d6, #af52de);
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+      background-size: 200%;
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      animation: textGradient 10s ease infinite;
+    }
+
+    @keyframes textGradient {
+      0% { background-position: 0% center; }
+      50% { background-position: 100% center; }
+      100% { background-position: 0% center; }
     }
 
     .hero-subtitle {
@@ -108,16 +141,18 @@
     }
 
     .feature-card {
-      background-color: var(--glass-background);
-      border-radius: 16px;
+      background-color: var(--card-background);
+      border-radius: var(--border-radius);
       padding: 20px;
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
       flex: 1;
       max-width: 400px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .feature-card::before {
@@ -127,26 +162,19 @@
       left: 0;
       right: 0;
       bottom: 0;
-      border-radius: 16px;
-      padding: 1.5px;
-      background: linear-gradient(
-              135deg,
-              #5ac8fa,
-              #007aff,
-              #5856d6
-      );
-      opacity: 0.7;
-      -webkit-mask:
-              linear-gradient(#fff 0 0) content-box,
-              linear-gradient(#fff 0 0);
+      border-radius: var(--border-radius);
+      padding: 2px;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+      opacity: 0.6;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
       pointer-events: none;
     }
 
     .feature-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
     }
 
     .feature-header {
@@ -158,7 +186,7 @@
     .feature-icon {
       font-size: 1.5rem;
       margin-right: 10px;
-      background: linear-gradient(135deg, #007aff, #5856d6);
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -185,6 +213,8 @@
       font-weight: 500;
       color: #424245;
       transition: all 0.2s ease;
+      position: relative;
+      overflow: hidden;
     }
 
     .model-badge:hover {
@@ -205,12 +235,34 @@
       background-color: var(--card-background);
       overflow: hidden;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      box-shadow: var(--shadow);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .api-section:hover {
       transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .api-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: var(--border-radius);
+      padding: 2px;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+      background-size: 200%;
+      opacity: 0.6;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      animation: gradientShift 10s ease infinite;
     }
 
     .api-header {
@@ -219,8 +271,10 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: linear-gradient(135deg, #f8f8f8, #ffffff);
+      background: transparent;
       border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      position: relative;
+      z-index: 1;
     }
 
     .api-header h2 {
@@ -231,6 +285,10 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     .api-logo {
@@ -244,6 +302,8 @@
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.5s ease, padding 0.5s ease;
+      position: relative;
+      z-index: 1;
     }
 
     .api-content.active {
@@ -260,7 +320,9 @@
       font-family: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
       font-size: 0.95rem;
       overflow: auto;
-      border: 1px solid rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
     }
 
     .code-block pre {
@@ -282,10 +344,13 @@
       font-size: 0.85rem;
       font-weight: 500;
       transition: all 0.2s ease;
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
     }
 
     .copy-button:hover {
       background-color: rgba(0, 0, 0, 0.15);
+      transform: scale(1.05);
     }
 
     .info-cards-container {
@@ -307,6 +372,10 @@
       transition: transform 0.3s ease;
       flex: 1;
       min-width: 300px;
+      box-shadow: var(--shadow);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .info-card::before {
@@ -318,28 +387,19 @@
       bottom: 0;
       border-radius: var(--border-radius);
       padding: 2px;
-      background: linear-gradient(
-              135deg,
-              #ff2d55,
-              #ff9500,
-              #ffcc00,
-              #34c759,
-              #5ac8fa,
-              #007aff,
-              #5856d6,
-              #af52de
-      );
-      -webkit-mask:
-              linear-gradient(#fff 0 0) content-box,
-              linear-gradient(#fff 0 0);
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+      background-size: 200%;
+      opacity: 0.6;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
       pointer-events: none;
-      opacity: 0.7;
+      animation: gradientShift 10s ease infinite;
     }
 
     .info-card:hover {
       transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
     }
 
     .info-card h3 {
@@ -369,11 +429,16 @@
 
     .badge:hover {
       background-color: rgba(0, 0, 0, 0.1);
+      transform: scale(1.05);
     }
 
     .endpoint-url {
       font-weight: 600;
       color: var(--primary-color);
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     .api-description {
@@ -396,6 +461,10 @@
     .toggle-icon {
       font-size: 1.2rem;
       transition: transform 0.3s ease;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     .rotate {
@@ -403,11 +472,13 @@
     }
 
     .gradient-text {
-      background: linear-gradient(90deg, #007aff, #5856d6);
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+      background-size: 200%;
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
       display: inline-block;
+      animation: textGradient 10s ease infinite;
     }
 
     .section-title {
@@ -415,7 +486,12 @@
       font-weight: 700;
       margin: 40px 0 20px;
       text-align: center;
-      color: var(--text-color);
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+      background-size: 200%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: textGradient 10s ease infinite;
     }
 
     .section-subtitle {
@@ -763,7 +839,7 @@ curl ${base_url}/github/v1/chat/completions \
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const BASE_URL = 'https://api-proxy-gilt-seven.vercel.app';
+    const BASE_URL = 'https://api-proxy-standard.vercel.app';
     const codeElements = document.querySelectorAll('code');
     codeElements.forEach(element => {
       if (element.textContent.includes('${base_url}')) {
