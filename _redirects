@@ -1,0 +1,8 @@
+/openai/v1/*       https://api.openai.com/v1/:splat      200
+/gemini/v1beta/*   https://generativelanguage.googleapis.com/v1beta/:splat  200
+/claude/v1/*       https://api.anthropic.com/v1/:splat    200
+/groq/openai/v1/*  https://api.groq.com/openai/v1/:splat  200
+/cohere/v2/*       https://api.cohere.ai/v2/:splat        200
+/xai/v1/*          https://api.x.ai/v1/:splat             200
+/mistral/v1/*      https://api.mistral.ai/v1/:splat       200
+/github/v1/*       https://ai.azure.com/github/v1/:splat  200
