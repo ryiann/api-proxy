@@ -7,40 +7,54 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary-color: #0066cc;
+      --primary-color: #007aff;
       --secondary-color: #5856d6;
+      --accent-color: #af52de;
       --background-color: #f5f5f7;
-      --card-background: #ffffff;
+      --card-background: rgba(255, 255, 255, 0.85);
       --text-color: #1d1d1f;
-      --border-radius: 16px;
-      --glass-background: rgba(255, 255, 255, 0.8);
+      --border-radius: 20px;
+      --glass-blur: blur(15px);
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       background-color: var(--background-color);
-      margin: 0;
-      padding: 0;
       color: var(--text-color);
       line-height: 1.6;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
+      background: linear-gradient(135deg, #f5f5f7 0%, #eaeaf2 100%);
+      overflow: hidden;
     }
 
     .container {
       text-align: center;
+      position: relative;
+      z-index: 1;
     }
 
     .hero-section {
       position: relative;
-      padding: 50px;
-      border-radius: 24px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      box-shadow: 0 20px 80px rgba(0, 0, 0, 0.07);
+      padding: 60px;
+      border-radius: var(--border-radius);
+      background: var(--card-background);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      animation: fadeIn 0.8s ease-out;
+      max-width: 800px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .hero-section::before {
@@ -50,78 +64,104 @@
       left: 0;
       right: 0;
       bottom: 0;
-      border-radius: 24px;
-      padding: 4px;
+      border-radius: var(--border-radius);
+      padding: 3px;
       background: linear-gradient(
-              135deg,
+              45deg,
               #ff2d55,
               #ff9500,
               #ffcc00,
               #34c759,
               #5ac8fa,
-              #007aff,
-              #5856d6,
-              #af52de
+              var(--primary-color),
+              var(--secondary-color),
+              var(--accent-color)
       );
-      -webkit-mask:
-              linear-gradient(#fff 0 0) content-box,
-              linear-gradient(#fff 0 0);
+      background-size: 300%;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
       pointer-events: none;
+      animation: gradientShift 15s ease infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .hero-title {
       margin: 0 0 40px;
-      font-size: 4.5rem;
+      font-size: 5rem;
       font-weight: 700;
-      letter-spacing: -1px;
+      letter-spacing: -1.5px;
       line-height: 1.1;
-      background: linear-gradient(90deg, #007aff, #5856d6, #af52de);
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+      background-size: 200%;
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      animation: textGradient 10s ease infinite;
+      position: relative;
+    }
+
+    @keyframes textGradient {
+      0% { background-position: 0% center; }
+      50% { background-position: 100% center; }
+      100% { background-position: 0% center; }
     }
 
     .loading-dots {
       display: flex;
       justify-content: center;
-      gap: 14px;
+      gap: 16px;
       margin-top: 30px;
     }
 
     .dot {
-      width: 16px;
-      height: 16px;
-      background: linear-gradient(135deg, #007aff, #5856d6, #af52de);
+      width: 14px;
+      height: 14px;
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
       border-radius: 50%;
-      animation: dotPulse 1.5s infinite ease-in-out;
+      animation: dotPulse 1.8s infinite ease-in-out;
+      box-shadow: 0 0 10px rgba(0, 122, 255, 0.5);
     }
 
     .dot:nth-child(2) {
-      animation-delay: 0.2s;
+      animation-delay: 0.3s;
     }
 
     .dot:nth-child(3) {
-      animation-delay: 0.4s;
+      animation-delay: 0.6s;
     }
 
     @keyframes dotPulse {
       0%, 80%, 100% {
         transform: scale(1);
+        opacity: 0.7;
       }
       40% {
-        transform: scale(1.5);
+        transform: scale(1.6);
+        opacity: 1;
       }
     }
 
     @media (max-width: 768px) {
       .hero-title {
         font-size: 3.5rem;
+        letter-spacing: -1px;
       }
 
       .hero-section {
-        padding: 30px;
+        padding: 40px 20px;
+        max-width: 95vw;
       }
 
       .loading-dots {
@@ -129,8 +169,14 @@
       }
 
       .dot {
-        width: 14px;
-        height: 14px;
+        width: 12px;
+        height: 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 2.5rem;
       }
     }
   </style>
